@@ -1,0 +1,7 @@
+# Dictionary
+
+Dictionary found at http://www.lexique.org/telLexique.php
+extract done with :
+```
+awk -F ";" '{print $1";"$4 }' dico.csv | egrep NOM$ | cut -d';' -f1
+```
