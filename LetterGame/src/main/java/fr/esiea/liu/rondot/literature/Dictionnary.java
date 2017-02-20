@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.text.Normalizer;
 
 public class Dictionnary {
 	private ArrayList<String> dictionnary = new ArrayList<String>();
@@ -12,7 +13,7 @@ public class Dictionnary {
 		File rawDic = new File("C:/Users/Kev/Documents/EclipseProjects/Inf4043_Liu_Rondot/LetterGame/src/main/resources/dico.txt");
 		Scanner s;
 		try {
-			s = new Scanner(rawDic);
+			s = new Scanner(rawDic,"UTF-8");
 			s.useDelimiter("\n");
 			while (s.hasNext()){
 			    this.dictionnary.add(s.next());
@@ -22,10 +23,23 @@ public class Dictionnary {
 			System.out.println("File not found");
 			e.printStackTrace();
 		}
+		convertCharacters();
+	}
+	
+	
+	public void convertCharacters(){
+		for(int i = 0; i < dictionnary.size(); i++){
+			String newString = stripAccents(dictionnary.get(i));
+			dictionnary.set(i, newString);
+		}
+	}
+	
+	public String stripAccents(String s){
+		return s == null ? null: Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+","");
 	}
 	
 	public void testDictionnary(){
-		for(int index=0; index < 5 ; index ++){
+		for(int index=15; index < 20 ; index ++){
 			System.out.println(dictionnary.get(index));
 		}
 		System.out.println("Size of the dictionnary: " + dictionnary.size());
