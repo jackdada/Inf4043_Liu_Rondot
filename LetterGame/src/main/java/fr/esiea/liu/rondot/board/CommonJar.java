@@ -8,7 +8,7 @@ public class CommonJar {
 	private ArrayList<Letter> commonjar;
 	
 	public void drawNextLetter(){
-		commonjar.add(Letter.randomLetter());
+		
 	}
 		
 }
