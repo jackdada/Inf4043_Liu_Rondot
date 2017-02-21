@@ -1,16 +1,28 @@
 package fr.esiea.liu.rondot.literature;
 
-import java.util.ArrayList;
+import java.util.Random;
 
 public class Letter {
 	private char letter;
 	
-	public Letter(char letter){
-		this.letter = letter;
+	public Letter(char c){
+		letter = c;
+	}
+	
+	public String getLetter(){
+		return String.valueOf(this.letter);
 	}
 	
 	public Letter randomLetter(){
-		
-		return null;
+		Random r = new Random();
+		char c = (char)(r.nextInt(26) + 'a');
+		this.letter = c;
+		return this;
+	}
+	
+	public void generateRandomLetter(){
+		Letter l = new Letter(' ');
+		l = l.randomLetter();
+		System.out.println(l.getLetter());
 	}
 }

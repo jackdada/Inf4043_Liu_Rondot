@@ -12,6 +12,7 @@ public class Player {
 	
 	public Player(String name){
 		this.name = name; 
+		this.score = words.size();
 	}
 	
 	public String getName(){ return this.name; }
@@ -20,4 +21,5 @@ public class Player {
 	
 	public void countWords(){ this.score = this.words.size() ;}
 	public void setFirstLetter(Letter letter){this.firstLetter = letter;}
+	
 }
