@@ -9,8 +9,8 @@ public class CommonJar {
 	private ArrayList<Letter> commonjar = new ArrayList<Letter>();
 	
 	public void drawNextLetter(){
-		Letter newLetter = new Letter(' ');
-		commonjar.add(newLetter.randomLetter());		
+		Letter newLetter = new Letter();
+		commonjar.add(newLetter);		
 	}
 		
 	public void printCommonJar(){
