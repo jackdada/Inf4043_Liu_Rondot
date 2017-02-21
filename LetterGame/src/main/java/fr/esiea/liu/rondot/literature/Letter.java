@@ -9,6 +9,10 @@ public class Letter {
 		letter = randomLetter();
 	}
 	
+	public Letter(char a){
+		letter = a ;
+	}
+	
 	public String getLetter(){
 		return String.valueOf(this.letter);
 	}

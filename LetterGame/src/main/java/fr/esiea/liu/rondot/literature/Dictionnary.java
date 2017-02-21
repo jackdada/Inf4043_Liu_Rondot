@@ -10,7 +10,7 @@ public class Dictionnary {
 	private ArrayList<String> dictionnary = new ArrayList<String>();
 	
 	public Dictionnary(){
-		File rawDic = new File("C:/Users/Kev/Documents/EclipseProjects/Inf4043_Liu_Rondot/LetterGame/src/main/resources/dico.txt");
+		File rawDic = new File("src/main/resources/dico.txt");
 		Scanner s;
 		try {
 			s = new Scanner(rawDic,"UTF-8");
@@ -26,6 +26,14 @@ public class Dictionnary {
 		convertCharacters();
 	}
 	
+	public boolean contains(String word){
+		if(dictionnary.contains(word)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 	
 	public void convertCharacters(){
 		for(int i = 0; i < dictionnary.size(); i++){

@@ -7,7 +7,7 @@ import fr.esiea.liu.rondot.literature.Word;
 public class Player {
 	private String name;
 	private int score;
-	private ArrayList<Word> words;
+	private ArrayList<Word> words = new ArrayList<Word>();
 	private Letter firstLetter;
 	
 	public Player(String name){
@@ -21,5 +21,11 @@ public class Player {
 	
 	public void countWords(){ this.score = this.words.size() ;}
 	public void setFirstLetter(Letter letter){this.firstLetter = letter;}
+	public Letter getFirstLetter(){return this.firstLetter;}
+	
+	public ArrayList<Word> retrieveWords(){
+		return this.words;
+	}
+	
 	
 }

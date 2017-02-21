@@ -8,9 +8,11 @@ import fr.esiea.liu.rondot.literature.Letter;
 public class CommonJar {
 	private ArrayList<Letter> commonjar = new ArrayList<Letter>();
 	
-	public void drawNextLetter(){
-		Letter newLetter = new Letter();
-		commonjar.add(newLetter);		
+	public void drawLetter(int nbOfLetter){
+		for(int i = 0 ; i < nbOfLetter ; i ++){
+			Letter newLetter = new Letter();
+			commonjar.add(newLetter);	
+		}
 	}
 		
 	public void printCommonJar(){
@@ -26,9 +28,7 @@ public class CommonJar {
 		Scanner in = new Scanner(System.in);
 		amountOfLetter = in.nextInt();
 			
-		for(int i = 0 ; i < amountOfLetter ; i ++ ){
-			drawNextLetter();
-		}
+		drawLetter(amountOfLetter);
 		
 		printCommonJar();
 	}
