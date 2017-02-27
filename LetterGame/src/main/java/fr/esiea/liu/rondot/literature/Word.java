@@ -25,14 +25,14 @@ public class Word {
 		return strBuild.toString();
 	}
 	
-	public boolean isWord(Dictionnary d){
+	/*public boolean isWord(Dictionnary d){
 		if(d.contains(string())){
 			return true;
 		}
 		else{
 			return false;
 		}
-	}
+	}*/
 	
 	public void testWord(){
 		Dictionnary d = new Dictionnary();

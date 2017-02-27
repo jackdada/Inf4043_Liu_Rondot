@@ -11,7 +11,7 @@ public class CommonJar {
 	
 	public void drawLetter(int nbOfLetter){
 		for(int i = 0 ; i < nbOfLetter ; i ++){
-			commonJar.add(randomLetter());
+			commonJar.add(new Character(randomLetter()));
 		}
 	}
 		
@@ -22,21 +22,12 @@ public class CommonJar {
 		}
 	}
 
-	public void testCommonJar(){
-		int amountOfLetter = 0;
-		System.out.println("How much letter you want ?");
-		Scanner in = new Scanner(System.in);
-		amountOfLetter = in.nextInt();
-			
-		drawLetter(amountOfLetter);
-		
-		printCommonJar();
-	}
+
 	public char randomLetter(){
 		Random r = new Random();
 		char c = (char)(r.nextInt(26) + 'a');
 
-		return new Character(c);
+		return c;
 	}
 
 }
