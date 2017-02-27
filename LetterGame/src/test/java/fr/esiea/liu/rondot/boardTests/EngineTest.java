@@ -1,4 +1,4 @@
-package literatureTests;
+package fr.esiea.liu.rondot.boardTests;
 
 import static org.junit.Assert.*;
 
@@ -6,15 +6,17 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import fr.esiea.liu.rondot.literature.Word;
+import fr.esiea.liu.rondot.board.Engine;
 
-public class WordTest {
+import java.io.ByteArrayInputStream;
+
+public class EngineTest {
+
+	protected Engine game;
 	
-	protected Word word;
-
 	@Before
 	public void setUp() throws Exception {
-		word = new Word("bonjour");
+		game = new Engine();
 	}
 
 	@After
@@ -22,8 +24,7 @@ public class WordTest {
 	}
 
 	@Test
-	public void test() {
-		word.testWord();
+	public  void testVide(){
 	}
 
 }

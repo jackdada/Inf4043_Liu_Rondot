@@ -1,4 +1,4 @@
-package literatureTests;
+package fr.esiea.liu.rondot.literatureTests;
 import static org.junit.Assert.*;
 
 import org.junit.After;

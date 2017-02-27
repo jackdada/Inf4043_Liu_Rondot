@@ -1,4 +1,4 @@
-package boardTests;
+package fr.esiea.liu.rondot.boardTests;
 
 import org.junit.After;
 import org.junit.Before;
