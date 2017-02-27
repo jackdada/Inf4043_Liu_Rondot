@@ -24,21 +24,13 @@ public class Word {
 		}
 		return strBuild.toString();
 	}
-<<<<<<< HEAD
 	
-	public void jesuismoch(){
+	public void jesuismocheetmechant(){
 		
 	}
 	
 	public boolean isWord(Dictionnary d){
 		if(d.contains(toString())){
-=======
-	public String salut(){
-		return "salut";
-	}
-	/*public boolean isWord(Dictionnary d){
-		if(d.contains(string())){
->>>>>>> 6788e2fe01d392e2cb62ef69e9b2d233e3e48c31
 			return true;
 		}
 		else{
