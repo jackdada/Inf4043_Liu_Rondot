@@ -2,9 +2,6 @@ package fr.esiea.liu.rondot.board;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
-
-import fr.esiea.liu.rondot.literature.Letter;
 
 public class CommonJar {
 	private ArrayList<Character> commonJar = new ArrayList<>();

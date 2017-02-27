@@ -1,12 +1,12 @@
 package fr.esiea.liu.rondot.domain;
 
 import java.util.ArrayList;
-import fr.esiea.liu.rondot.literature.Letter;
+
 import fr.esiea.liu.rondot.literature.Word;
 
 public class Player {
 	private String name;
-	private int score;
+	private int score = 0;
 	private ArrayList<Word> words = new ArrayList<Word>();
 	private Character firstLetter;
 	

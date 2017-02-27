@@ -29,7 +29,7 @@ public class Engine {
 	}
 	
 	public static void initPlayers(int number){
-		
+
 		for(int i = 0 ; i < number ; i ++){
 			globalCounter++ ;
 			System.out.println("Choose name for player n° "+globalCounter);

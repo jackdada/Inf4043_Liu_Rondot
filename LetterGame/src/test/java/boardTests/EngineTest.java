@@ -8,6 +8,8 @@ import org.junit.Test;
 
 import fr.esiea.liu.rondot.board.Engine;
 
+import java.io.ByteArrayInputStream;
+
 public class EngineTest {
 
 	protected Engine game;
@@ -22,8 +24,7 @@ public class EngineTest {
 	}
 
 	@Test
-	public void test() {
-		game.main(null);
+	public  void testVide(){
 	}
 
 }
