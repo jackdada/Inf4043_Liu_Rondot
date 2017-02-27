@@ -25,6 +25,13 @@ public class Word {
 		return strBuild.toString();
 	}
 	
+<<<<<<< HEAD
+=======
+	public void jesuiskevinetjaimelamuscu(){
+		
+	}
+	
+>>>>>>> kévin
 	public boolean isWord(Dictionnary d){
 		if(d.contains(toString())){
 			return true;
