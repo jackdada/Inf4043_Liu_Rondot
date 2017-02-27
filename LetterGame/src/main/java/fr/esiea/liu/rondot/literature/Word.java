@@ -25,7 +25,7 @@ public class Word {
 		return strBuild.toString();
 	}
 	
-	public void jesuiskevin(){
+	public void jesuiskevinetjaimelamuscu(){
 		
 	}
 	
