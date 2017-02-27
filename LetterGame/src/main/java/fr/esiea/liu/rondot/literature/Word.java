@@ -24,7 +24,9 @@ public class Word {
 		}
 		return strBuild.toString();
 	}
-	
+	public String salut(){
+		return "salut";
+	}
 	/*public boolean isWord(Dictionnary d){
 		if(d.contains(string())){
 			return true;
