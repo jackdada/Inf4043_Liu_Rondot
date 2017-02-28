@@ -24,6 +24,7 @@ public class Word {
 		}
 		return strBuild.toString();
 	}
+<<<<<<< HEAD
 	
 <<<<<<< HEAD
 =======
@@ -32,6 +33,9 @@ public class Word {
 	}
 	
 >>>>>>> kévin
+=======
+
+>>>>>>> 0b6bbb7681c57eae3f96be4ec84a4a2134ab494d
 	public boolean isWord(Dictionnary d){
 		if(d.contains(toString())){
 			return true;
@@ -39,10 +43,5 @@ public class Word {
 		else{
 			return false;
 		}
-	}
-	
-	public void testWord(){
-		Dictionnary d = new Dictionnary();
-		System.out.println(d.contains("a"));
 	}
 }

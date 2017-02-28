@@ -11,6 +11,10 @@ public class CommonJar {
 			commonJar.add(new Character(randomLetter()));
 		}
 	}
+	
+	public Character getLetter(int position){
+		return commonJar.get(position);
+	}
 		
 	public void printCommonJar(){
 		System.out.println("Common Jar has: ");
@@ -19,6 +23,9 @@ public class CommonJar {
 		}
 	}
 
+	public ArrayList<Character> getCommonJar(){
+		return this.commonJar;
+	}
 
 	public char randomLetter(){
 		Random r = new Random();
