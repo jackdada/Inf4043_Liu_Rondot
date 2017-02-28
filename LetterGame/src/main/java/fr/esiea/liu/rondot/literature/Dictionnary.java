@@ -24,7 +24,10 @@ public class Dictionnary {
 		}
 		convertCharacters();
 	}
-	
+	public ArrayList<String> getDictionnary(){
+		return this.dictionnary;
+	}
+
 	public boolean contains(String word){
 		if(dictionnary.contains(word)){
 			return true;
@@ -44,15 +47,7 @@ public class Dictionnary {
 	public String stripAccents(String s){
 		return s == null ? null: Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+","");
 	}
-	
-	public void testDictionnary(){
-		int lowerIndex = 0;
-		int upperIndex = 100;
-		System.out.println("Dictionnary from word "+ lowerIndex + " to word "+upperIndex);
-		for(int index=lowerIndex; index < upperIndex ; index ++){
-			System.out.println(dictionnary.get(index));
-		}
-		System.out.println("Size of the dictionnary: " + dictionnary.size());
-	}
+
+
 	
 }

@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import java.util.ArrayList;
 import fr.esiea.liu.rondot.literature.Dictionnary;
 import fr.esiea.liu.rondot.literature.Word;
 
@@ -18,12 +18,29 @@ public class DictionnaryTest {
 	}
 
 	@After
-	public void tearDown(){
+	public void tearDown()throws Exception{
 	}
 
 	@Test
-	public void testInit() throws Exception {
-		dictionnary.testDictionnary();
+	public void testStripAccents() {
+		System.out.println("éèëêàâäùüûöôîï : " + dictionnary.stripAccents("éèëêàâäùüûöôîï"));
+	}
+
+	@Test
+	public  void  testContains(){
+		System.out.println("bonjour : " + dictionnary.contains("bonjour"));
+		System.out.println("zlskdie : " + dictionnary.contains("zlskdie"));
+	}
+
+	@Test
+	public void testDictionnary() throws Exception {
+		int lowerIndex = 0;
+		int upperIndex = 100;
+		System.out.println("Dictionnary from word "+ lowerIndex + " to word "+upperIndex);
+		for(int index=lowerIndex; index < upperIndex ; index ++){
+			System.out.println(dictionnary.getDictionnary().get(index));
+		}
+		System.out.println("Size of the dictionnary: " + dictionnary.getDictionnary().size());
 	}
 
 }
