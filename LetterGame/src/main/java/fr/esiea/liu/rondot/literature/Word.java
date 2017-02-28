@@ -34,8 +34,7 @@ public class Word {
 		}
 	}
 	
-	public void testWord(){
-		Dictionnary d = new Dictionnary();
-		System.out.println(d.contains("a"));
+	public void testWord(Dictionnary dictionnary){
+		System.out.println(isWord(dictionnary));
 	}
 }
