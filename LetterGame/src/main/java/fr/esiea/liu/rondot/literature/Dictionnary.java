@@ -14,7 +14,6 @@ public class Dictionnary {
 		Scanner s;
 		try {
 			s = new Scanner(rawDic,"UTF-8");
-			s.useDelimiter("\n");
 			while (s.hasNext()){
 			    this.dictionnary.add(s.next());
 			}
@@ -47,7 +46,10 @@ public class Dictionnary {
 	}
 	
 	public void testDictionnary(){
-		for(int index=15; index < 20 ; index ++){
+		int lowerIndex = 0;
+		int upperIndex = 100;
+		System.out.println("Dictionnary from word "+ lowerIndex + " to word "+upperIndex);
+		for(int index=lowerIndex; index < upperIndex ; index ++){
 			System.out.println(dictionnary.get(index));
 		}
 		System.out.println("Size of the dictionnary: " + dictionnary.size());

@@ -15,17 +15,30 @@ public class Player {
 		this.score = words.size();
 	}
 	
-	public String getName(){ return this.name; }
-	public int getScore(){ return this.score; }
-	public ArrayList<Word> getWords() { return this.words;}
+	public String getName(){ 
+		return this.name; 
+	}
 	
-	public void countWords(){ this.score = this.words.size() ;}
-	public void setFirstLetter(Character letter){this.firstLetter = letter;}
-	public Character getFirstLetter(){return this.firstLetter;}
+	public int getScore(){ 
+		return this.score; 
+	}
+	
+	public ArrayList<Word> getWords() { 
+		return this.words;
+	}
+	
+	public void countWords(){ 
+		this.score = this.words.size() ;
+	}
+	
+	public void setFirstLetter(Character letter){
+		this.firstLetter = letter;
+	}
+	public Character getFirstLetter(){
+		return this.firstLetter;
+	}
 	
 	public ArrayList<Word> retrieveWords(){
 		return this.words;
 	}
-	
-	
 }

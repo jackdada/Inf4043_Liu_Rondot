@@ -32,10 +32,6 @@ public class Word {
 		if(d.contains(string())){
 =======
 	
-	public void jesuismoch(){
-		
-	}
-	
 	public boolean isWord(Dictionnary d){
 		if(d.contains(toString())){
 >>>>>>> 261858e81d03e2d706cb4ba3dd09527241caebd7
@@ -46,8 +42,7 @@ public class Word {
 		}
 	}
 	
-	public void testWord(){
-		Dictionnary d = new Dictionnary();
-		System.out.println(d.contains("a"));
+	public void testWord(Dictionnary dictionnary){
+		System.out.println(isWord(dictionnary));
 	}
 }

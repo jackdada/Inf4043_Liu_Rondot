@@ -1,4 +1,4 @@
-package fr.esiea.liu.rondot.boardTests;
+package fr.esiea.liu.rondot.board;
 
 import static org.junit.Assert.*;
 
