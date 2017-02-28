@@ -1,4 +1,4 @@
-package fr.esiea.liu.rondot.literatureTests;
+package fr.esiea.liu.rondot.literature;
 
 import static org.junit.Assert.*;
 
