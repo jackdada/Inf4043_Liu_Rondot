@@ -48,7 +48,7 @@ public class Engine {
 			Player player = new Player(name);
 			players.add(player);
 			mapOfPlayersTurn.put(player, 0);
-		}
+		} 
 	}
 	
 	public static void initiatePlayersOrder(){
