@@ -24,7 +24,7 @@ public class EngineTest {
 	}
 
 	@Test
-	public  void testVide(){
+	public  void testInitiatePlayersOrder(){
+		game.firstRound();
 	}
-
 }

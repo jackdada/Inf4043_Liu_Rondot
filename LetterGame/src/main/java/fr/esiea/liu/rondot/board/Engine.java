@@ -17,41 +17,35 @@ public class Engine {
 	private static HashMap<Player,Integer> mapOfPlayersTurn;
 	
 	public static void run(String[] args) {
-		commonJar = new CommonJar();
-		dictionnary = new Dictionnary();
-		players = new ArrayList<Player>();
-		mapOfPlayersTurn = new HashMap<Player,Integer>();
-		
 		System.out.println("How many players?");
 		Scanner in = new Scanner(System.in);
 		int nbOfPlayer = in.nextInt();
 		initPlayers(nbOfPlayer);
 	
-		for(int i = 0 ; i<players.size() ; i ++){
-			System.out.println(players.get(i).getName());
-		}
+	}
+	
+	public Engine() {
+		commonJar = new CommonJar();
+		dictionnary = new Dictionnary();
+		players = new ArrayList<Player>();
+		mapOfPlayersTurn = new HashMap<Player,Integer>();
 	}
 	
 	public static void firstRound(){
+		System.out.println("The first draw letters :");
 		for(int i = 0 ; i < players.size() ; i ++){
 			commonJar.drawLetter(1);
 			players.get(i).setFirstLetter(commonJar.getLetter(i));
 		}
-	}
-	
-	public static void initPlayers(int number){
-		for(int i = 0 ; i < number ; i ++){
-			globalCounter++ ;
-			System.out.println("Choose name for player n° "+globalCounter);
-			Scanner in = new Scanner(System.in);
-			String name = in.next();
-			Player player = new Player(name);
-			players.add(player);
-			mapOfPlayersTurn.put(player, 0);
-		} 
-	}
-	
-	public static void initiatePlayersOrder(){
+		for(int i = 0 ; i<players.size() ; i ++){
+			System.out.print(players.get(i).getName() + "\t");
+		}
+		System.out.println();
+		for(int i = 0 ; i<players.size() ; i ++){
+			System.out.print(players.get(i).getFirstLetter()+ "\t");
+		}
+		System.out.println();
+		System.out.println();
 		int index=0;
 		for(int i = 0 ; i < players.size()-1 ; i++){
 			if(players.get(i).getFirstLetter() < players.get(i+1).getFirstLetter()){
@@ -70,7 +64,32 @@ public class Engine {
 				}
 			}
 		}
+		System.out.println("New players order:");
+		for(int i = 0 ; i<players.size() ; i ++){
+			System.out.print(players.get(i).getName() + "\t");
+		}
+		System.out.println();
+		for(int i = 0 ; i<players.size() ; i ++){
+			System.out.print(players.get(i).getFirstLetter()+ "\t");
+		}
+		System.out.println();
+		System.out.println();
 	}
-
-
+	
+	public static void initPlayers(int number){
+		for(int i = 0 ; i < number ; i ++){
+			globalCounter++ ;
+			System.out.println("Choose name for player n° "+globalCounter);
+			Scanner in = new Scanner(System.in);
+			String name = in.next();
+			Player player = new Player(name);
+			players.add(player);
+			mapOfPlayersTurn.put(player, 0);
+		} 
+		for(int i = 0 ; i<players.size() ; i ++){
+			System.out.print(players.get(i).getName() + "\t");
+		}		
+		System.out.println();
+		System.out.println();
+	}
 }
