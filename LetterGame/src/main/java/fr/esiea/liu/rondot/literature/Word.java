@@ -14,7 +14,10 @@ public class Word {
 			}
 		}
 	}
-	
+	public ArrayList<Character> getWord(){
+		return this.word;
+	}
+
 	public String toString(){
 		Iterator<Character> itr = word.iterator();
 		StringBuilder strBuild = new StringBuilder();
@@ -24,7 +27,7 @@ public class Word {
 		}
 		return strBuild.toString();
 	}
-	
+
 	public boolean isWord(Dictionnary d){
 		if(d.contains(toString())){
 			return true;
@@ -32,9 +35,5 @@ public class Word {
 		else{
 			return false;
 		}
-	}
-	
-	public void testWord(Dictionnary dictionnary){
-		System.out.println(isWord(dictionnary));
 	}
 }
