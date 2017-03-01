@@ -1,12 +1,9 @@
 package fr.esiea.liu.rondot.literature;
-import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import java.util.ArrayList;
 import fr.esiea.liu.rondot.literature.Dictionnary;
-import fr.esiea.liu.rondot.literature.Word;
 
 public class DictionnaryTest {
 

@@ -21,9 +21,15 @@ public class CommonJar {
 	}
 		
 	public void printCommonJar(){
-		System.out.println("Common Jar has: ");
-		for(int i = 0 ; i < commonJar.size() ; i++){
-			System.out.print(commonJar.get(i)+ "  ");
+		System.out.println("The common jar contains: ");
+		if(commonJar.size() != 0){
+			for(int i = 0 ; i < commonJar.size() ; i ++){
+				System.out.print(commonJar.get(i) + "  ");
+			}
+			System.out.println();
+		}
+		else{
+			System.out.println("No letters in the common jar");
 		}
 	}
 

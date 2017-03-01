@@ -17,11 +17,7 @@ public class Engine {
 	private static HashMap<Player,Integer> mapOfPlayersTurn;
 	
 	public static void run(String[] args) {
-		System.out.println("How many players?");
-		Scanner in = new Scanner(System.in);
-		int nbOfPlayer = in.nextInt();
-		initPlayers(nbOfPlayer);
-	
+		System.out.println("How many players?");	
 	}
 	
 	public Engine() {
@@ -80,16 +76,33 @@ public class Engine {
 		for(int i = 0 ; i < number ; i ++){
 			globalCounter++ ;
 			System.out.println("Choose name for player n° "+globalCounter);
-			Scanner in = new Scanner(System.in);
-			String name = in.next();
+			String name = enterAString();
 			Player player = new Player(name);
-			players.add(player);
-			mapOfPlayersTurn.put(player, 0);
+			addPlayers(player);
 		} 
 		for(int i = 0 ; i<players.size() ; i ++){
 			System.out.print(players.get(i).getName() + "\t");
 		}		
 		System.out.println();
 		System.out.println();
+	}
+	
+	public static void addPlayers(Player player){
+		players.add(player);
+		mapOfPlayersTurn.put(player, 0);
+	}
+	
+	public static String enterAString(){
+		Scanner in = new Scanner(System.in);
+		String string = in.next();
+		in.close();
+		return string;
+	}
+	
+	public static int enterAnInteger(){
+		Scanner in = new Scanner(System.in);
+		int integer = in.nextInt();
+		in.close();
+		return integer;
 	}
 }
