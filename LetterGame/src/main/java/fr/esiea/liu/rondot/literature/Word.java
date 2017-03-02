@@ -14,7 +14,10 @@ public class Word {
 			}
 		}
 	}
-	
+	public ArrayList<Character> getWord(){
+		return this.word;
+	}
+
 	public String toString(){
 		Iterator<Character> itr = word.iterator();
 		StringBuilder strBuild = new StringBuilder();

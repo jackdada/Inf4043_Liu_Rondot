@@ -1,14 +1,13 @@
 package fr.esiea.liu.rondot.board;
 
-import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import fr.esiea.liu.rondot.board.Engine;
+import fr.esiea.liu.rondot.domain.Player;
 
-import java.io.ByteArrayInputStream;
 
 public class EngineTest {
 
@@ -24,7 +23,17 @@ public class EngineTest {
 	}
 
 	@Test
-	public  void testVide(){
+	public  void testInitiatePlayersOrder(){
+		for(int i = 0 ; i < 4 ; i++ ){
+			Player player = new Player("p"+ i );
+			game.addPlayers(player);
+		}
+		game.firstRound();
 	}
-
+	
+	
+	@Test
+	public void testRun(){
+		game.run(null);
+	}
 }

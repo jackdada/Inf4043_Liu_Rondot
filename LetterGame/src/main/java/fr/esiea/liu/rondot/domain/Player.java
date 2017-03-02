@@ -27,6 +27,15 @@ public class Player {
 		return this.words;
 	}
 	
+	public void addWord(Word word){
+		words.add(word);
+		score++;
+	}
+	public void removeWord(Word word){
+		words.remove(word);
+		score--;
+	}
+	
 	public void countWords(){ 
 		this.score = this.words.size() ;
 	}
@@ -37,8 +46,21 @@ public class Player {
 	public Character getFirstLetter(){
 		return this.firstLetter;
 	}
-	
-	public ArrayList<Word> retrieveWords(){
-		return this.words;
+
+
+	public void showWords(){
+		for(int i=0; i<words.size(); i++){
+			System.out.print(i + ": " + words.get(i) + "  ");
+		}
+		System.out.println();
+	}
+
+	public boolean isWinner(){
+		if(this.score == 10){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 }

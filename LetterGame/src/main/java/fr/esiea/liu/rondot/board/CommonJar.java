@@ -1,6 +1,10 @@
 package fr.esiea.liu.rondot.board;
 
+import fr.esiea.liu.rondot.literature.Word;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.Random;
 
 public class CommonJar {
@@ -17,9 +21,15 @@ public class CommonJar {
 	}
 		
 	public void printCommonJar(){
-		System.out.println("Common Jar has: ");
-		for(int i = 0 ; i < commonJar.size() ; i++){
-			System.out.print(commonJar.get(i)+ "  ");
+		System.out.println("The common jar contains: ");
+		if(commonJar.size() != 0){
+			for(int i = 0 ; i < commonJar.size() ; i ++){
+				System.out.print(commonJar.get(i) + "  ");
+			}
+			System.out.println();
+		}
+		else{
+			System.out.println("No letters in the common jar");
 		}
 	}
 
@@ -32,6 +42,33 @@ public class CommonJar {
 		char c = (char)(r.nextInt(26) + 'a');
 
 		return c;
+	}
+	public void add(Character character){
+		this.commonJar.add(character);
+	}
+
+	public boolean containsLetter(Word word){
+		Iterator<Character> itr = word.getWord().iterator();
+		while(itr.hasNext()){
+			Character character = itr.next();
+			int freqInWord = Collections.frequency(word.getWord(), character);
+			int freqInCommonJar = Collections.frequency(this.commonJar, character);
+			if(freqInWord > freqInCommonJar){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public void removeLetter(Character character){
+		this.commonJar.remove(character);
+	}
+
+	public void removeLetterFromWord(Word word){
+		Iterator<Character> itr = word.getWord().iterator();
+		while(itr.hasNext()){
+			removeLetter(itr.next());
+		}
 	}
 
 }

@@ -1,8 +1,5 @@
 package fr.esiea.liu.rondot.literature;
 
-import static org.junit.Assert.*;
-
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,4 +30,11 @@ public class WordTest {
 		System.out.println(word.isWord(dictionnary));
 	}
 
+	@Test
+	public void testComparingWords(){
+		word = new Word("bonjour");
+		Word newWord = new Word("rebonjourlskjfljqsflkjqsdf");
+		System.out.println(newWord.toString().contains(word.toString()));
+		
+	}
 }
