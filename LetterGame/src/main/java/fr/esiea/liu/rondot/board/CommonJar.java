@@ -47,8 +47,7 @@ public class CommonJar {
 		this.commonJar.add(character);
 	}
 
-	//class pour verifier si un mot peut être fait à partir es lettre du pot commun
-	public boolean letterContains(Word word){
+	public boolean containsLetter(Word word){
 		Iterator<Character> itr = word.getWord().iterator();
 		while(itr.hasNext()){
 			Character character = itr.next();

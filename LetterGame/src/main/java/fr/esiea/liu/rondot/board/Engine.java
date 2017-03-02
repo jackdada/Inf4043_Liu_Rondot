@@ -1,13 +1,11 @@
 package fr.esiea.liu.rondot.board;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 import fr.esiea.liu.rondot.domain.Player;
 import fr.esiea.liu.rondot.literature.Dictionnary;
 import fr.esiea.liu.rondot.literature.Word;
+import org.jetbrains.annotations.Nullable;
 
 public class Engine {
 
@@ -16,85 +14,94 @@ public class Engine {
 	private static ArrayList<Player> players;
 	private static int globalCounter = 0;
 	
-	public static void run(String[] args) {
+	public static void run(String[] args){
 		System.out.println("How many players?");	
 		int numberOfPlayers = enterAnInteger();
 		initPlayers(numberOfPlayers);
-		firstRound();
-		while(!aPlayerWon()){
-			for(int i = 0 ; i < players.size() ; i++){
-				printPlayersWords();
-				commonJar.printCommonJar();
-				aPlayersTurn(players.get(i));
+		initOrder();
+		do{
+			int i=0;
+			printPlayersWords();
+			commonJar.printCommonJar();
+			aPlayersTurn(players.get(i));
+			if(i < players.size()-1) {
+				i++;
+			}else {
+				i = 0;
 			}
-		}
+		}while(!aPlayerWon());
+		Player winer = returnWinner();
+		endOfGame(winer);
+
 	}
-	
+
+
 	public Engine() {
 		commonJar = new CommonJar();
 		dictionnary = new Dictionnary();
-		players = new ArrayList<Player>();
+		players = new ArrayList<>();
 	}
-	
-	public static void firstRound(){
-		System.out.println("The first draw letters :");
-		for(int i = 0 ; i < players.size() ; i ++){
-			commonJar.drawLetter(1);
-			players.get(i).setFirstLetter(commonJar.getLetter(i));
-		}
-		for(int i = 0 ; i<players.size() ; i ++){
-			System.out.print(players.get(i).getName() + "\t");
-		}
-		System.out.println();
-		for(int i = 0 ; i<players.size() ; i ++){
-			System.out.print(players.get(i).getFirstLetter()+ "\t");
-		}
-		System.out.println();
-		System.out.println();
-		for(int i = 0 ; i < players.size() ; i++){
-			for(int j = 0 ; j < players.size()-1 ; j++){
-				if(players.get(j).getFirstLetter() > players.get(j+1).getFirstLetter()){
-					Collections.swap(players, j, j+1);
-				}
-			}
-		}
-		System.out.println("New players order:");
-		for(int i = 0 ; i<players.size() ; i ++){
-			System.out.print(players.get(i).getName() + "\t");
-		}
-		System.out.println();
-		for(int i = 0 ; i<players.size() ; i ++){
-			System.out.print(players.get(i).getFirstLetter()+ "\t");
-		}
-		System.out.println();
-		System.out.println();
-	}
-	
+
 	public static void initPlayers(int number){
 		for(int i = 0 ; i < number ; i ++){
 			globalCounter++ ;
-			System.out.println("Choose name for player n° "+globalCounter);
-			String name = enterAString();
+			String name;
+			do {
+				System.out.println("Choose name for player n° " + globalCounter);
+				name = enterAString();
+				name = name.substring(0, 10);
+			}while(existedName(name) == true);
 			Player player = new Player(name);
 			addPlayers(player);
-		} 
+		}
+
 		for(int i = 0 ; i<players.size() ; i ++){
 			System.out.print(players.get(i).getName() + "\t");
-		}		
-		System.out.println();
-		System.out.println();
+		}
 	}
-	
+
+	public static boolean existedName(String name){
+		for(int i=0; i<players.size(); i++){
+			if(players.get(i).getName().equals(name)){
+				System.out.println("Player name " + name + " is already used. Choose another one");
+				return true;
+			}
+		}
+		return false;
+	}
 	public static void addPlayers(Player player){
 		players.add(player);
 	}
-	
+
 	public static String enterAString(){
 		Scanner in = new Scanner(System.in);
 		String string = in.next();
 		return string;
 	}
-	
+
+	public static void initOrder(){
+		for(int i = 0 ; i < players.size() ; i ++){
+			commonJar.drawLetter(1);
+			players.get(i).setFirstLetter(commonJar.getLetter(i));
+		}
+		sortPlayers();
+	}
+
+	public static void sortPlayers(){
+		boolean sorted = false;
+		int size = players.size();
+		while (!sorted){
+			sorted = true;
+			for(int i = 0; i < size-1; i++){
+				if(players.get(i).getFirstLetter() > players.get(i+1).getFirstLetter()){
+					Collections.swap(players, i, i+1);
+					sorted = false;
+				}
+			}
+			size--;
+		}
+	}
+
 	public static int enterAnInteger(){
 		Scanner in = new Scanner(System.in);
 		int integer = in.nextInt();
@@ -102,26 +109,26 @@ public class Engine {
 	}
 	
 	public static Player returnWinner(){
-		Player player = new Player("");
 		for(int i = 0 ; i < players.size() ; i ++){
 			if(players.get(i).isWinner()){
-				player = players.get(i);
+				return players.get(i);
 			}
 		}
-		return player;
+		return null;
 	}
 	
 	public static boolean aPlayerWon(){
-		boolean aPlayerWon = false;
 		for(int i = 0 ; i < players.size() ; i ++){
 			if(players.get(i).isWinner()){
-				aPlayerWon = true;
-			}
-			else{
-				aPlayerWon =  false; 
+				return true;
 			}
 		}
-		return aPlayerWon;
+		return false;
+	}
+
+	public static void endOfGame(Player player){
+		System.out.println("The winner is: " + player.getName());
+		System.out.println("His word: " + player.showWords());
 	}
 	
 	public static void printPlayersWords(){
@@ -134,74 +141,83 @@ public class Engine {
 		System.out.println();
 	}
 	
-	public static String aPlayersTurn(Player player){
-		String a = "";
+	public static void aPlayersTurn(Player player){
+		boolean end = false;
 		System.out.println(player.getName() + "'s turn");
-		System.out.println("What do you want to do ?");
-		System.out.println("q: pass your turn | n: enter a new word | s: steal a word from other players");
-		String option = enterAString();
-		if(option.equals("n")){
-			newWord(player);
-		}
-		if(option.equals("s")){
-			stealWord(player);
-		}
-		if(option.equals("q")){
-			a = "q";
-		}
-		else{
-			System.out.println("Please select an appropriate option");
-			aPlayersTurn(player);
-		}
-		return a;
+		commonJar.drawLetter(2);
+		do {
+			System.out.println("What do you want to do ?");
+			System.out.println("q: end your turn | n: enter a new word | s: steal a word from other players");
+			String option = enterAString();
+			switch (option) {
+				case "n":
+					newWord(player);
+					break;
+				case "s":
+					stealWord(player);
+					break;
+				case "q":
+					end = true;
+					break;
+				default:
+					System.out.println("Please select an appropriate option");
+			}
+		}while (end == false || player.getScore()==10);
 	}
 	
 	public static void newWord(Player player){
-		System.out.println("Enter a new Word from common Jar");
+		System.out.println("Enter a new Word from common jar");
 		String in = enterAString();
 		Word word = new Word(in);
-		if(commonJar.letterContains(word)){
+		if(commonJar.containsLetter(word) && word.isWord(dictionnary)){
 			System.out.println(word  + " is a word ! You win 1 point");
 			player.addWord(word);
 			commonJar.removeLetterFromWord(word);
+			commonJar.drawLetter(1);
 		}
 		else{
-			System.out.println(word + " is not an appropiate word");
-			aPlayersTurn(player);
+			System.out.println(word + " is not in dictionary or there is not enough letter in common jar");
 		}
 	}
 	
 	public static void stealWord(Player player){
-		System.out.println("From whom you want to steal a word ?");
-		String name = enterAString();
-		if(players.contains(name)){
-			Player p = players.get(getIndexOfPlayer(name));
-			System.out.println("You want to steal a word from "+ name +"!\nWhich word you want to steal ?");
-			for(int i = 0 ; i < p.getWords().size() ; i++){
-				System.out.print(i + ": " +p.getWords().get(i) + "  ");
-			}
-			int stolenWordIndex = enterAnInteger();
-			if(stolenWordIndex > 0 && stolenWordIndex < p.getWords().size()){
-				System.out.println("You want to steal the word '" + p.getWords().get(stolenWordIndex)+ "'\nEnter the new word from stolen word ?");
-				String word = enterAString();
-				Word newWord = new Word(word);
-				if(commonJar.letterContains(newWord) && word.contains(p.getWords().get(stolenWordIndex).toString())){
-					System.out.println(newWord  + " is a word ! You win 1 point");
-					player.addWord(newWord);
-					p.getWords().remove(stolenWordIndex);
-				}
-				else{
-					System.out.println(newWord + " is not an appropiate word");
-					aPlayersTurn(player);
-				}
-			}
-		}
-		else{
-			System.out.println(name + " is not playing this game !");
-			aPlayersTurn(player);
-		}
+		Player stolenPlayer = null;
+		do {
+			System.out.println("From whom you want to steal a word ?");
+			String name = enterAString();
+			name = name.substring(0, 10);
+				stolenPlayer = existedPlayer(name);
+		}while (stolenPlayer != null);
+
+		System.out.println("You want to steal a word from "+ stolenPlayer.getName() +"!\nWhich word you want to steal ?");
+		int stolenWordIndex = selectStolenWordIndex(stolenPlayer);
+		System.out.println("You want to steal the word '" + stolenPlayer.getWords().get(stolenWordIndex)+ "'\nEnter the new word from stolen word ?");
+		String word = enterAString();
+		Word newWord = new Word(word);
 	}
-	
+
+	public static int selectStolenWordIndex(Player player){
+		do {
+			player.showWords();
+			int stolenWordIndex = enterAnInteger();
+			if(stolenWordIndex > 0 && stolenWordIndex < player.getWords().size()){
+				return stolenWordIndex;
+			}
+			System.out.println("Invalid number!\nWhich word you want to steal ?");
+		}while(true);
+
+	}
+
+	@Nullable
+	public static Player existedPlayer(String name){
+		for(int i; i<players.size(); i++){
+			if(players.get(i).getName().equals(name)){
+				return players.get(i);
+			}
+		}
+		return null;
+	}
+
 	public static int getIndexOfPlayer(String name){
 		int index = 0;
 		for(int i = 0 ; i < players.size() ; i ++){
