@@ -47,7 +47,7 @@ public class CommonJar {
 		this.commonJar.add(character);
 	}
 
-	public boolean containsLetter(Word word){
+	public boolean letterContains(Word word){
 		Iterator<Character> itr = word.getWord().iterator();
 		while(itr.hasNext()){
 			Character character = itr.next();

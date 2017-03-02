@@ -5,7 +5,6 @@ import java.util.*;
 import fr.esiea.liu.rondot.domain.Player;
 import fr.esiea.liu.rondot.literature.Dictionnary;
 import fr.esiea.liu.rondot.literature.Word;
-import org.jetbrains.annotations.Nullable;
 
 public class Engine {
 
@@ -24,15 +23,13 @@ public class Engine {
 			printPlayersWords();
 			commonJar.printCommonJar();
 			aPlayersTurn(players.get(i));
-			if(i < players.size()-1) {
-				i++;
-			}else {
-				i = 0;
+			i++;
+			if(i == players.size()) {
+				i=0;
 			}
 		}while(!aPlayerWon());
 		Player winer = returnWinner();
 		endOfGame(winer);
-
 	}
 
 
@@ -49,7 +46,9 @@ public class Engine {
 			do {
 				System.out.println("Choose name for player n° " + globalCounter);
 				name = enterAString();
-				name = name.substring(0, 10);
+				if(name.length() > 10){
+					name = name.substring(0, 10);
+				}
 			}while(existedName(name) == true);
 			Player player = new Player(name);
 			addPlayers(player);
@@ -58,6 +57,8 @@ public class Engine {
 		for(int i = 0 ; i<players.size() ; i ++){
 			System.out.print(players.get(i).getName() + "\t");
 		}
+		System.out.println();
+		System.out.println();
 	}
 
 	public static boolean existedName(String name){
@@ -128,7 +129,8 @@ public class Engine {
 
 	public static void endOfGame(Player player){
 		System.out.println("The winner is: " + player.getName());
-		System.out.println("His word: " + player.showWords());
+		System.out.print("His word: " );
+		player.showWords();
 	}
 	
 	public static void printPlayersWords(){
@@ -137,7 +139,9 @@ public class Engine {
 			for(int j = 0 ; j < players.get(i).getWords().size() ; i ++){
 				System.out.print(players.get(i).getWords().get(j) + "  ");
 			}
+			System.out.println();
 		}
+		System.out.println();
 		System.out.println();
 	}
 	
@@ -152,24 +156,31 @@ public class Engine {
 			switch (option) {
 				case "n":
 					newWord(player);
+					System.out.println();
+					System.out.println();
 					break;
 				case "s":
 					stealWord(player);
+					System.out.println();
+					System.out.println();
 					break;
 				case "q":
 					end = true;
+					System.out.println();
+					System.out.println();
+					System.out.println(players.size());
 					break;
 				default:
 					System.out.println("Please select an appropriate option");
 			}
-		}while (end == false || player.getScore()==10);
+		}while (end == false || player.getScore() == 10);
 	}
 	
 	public static void newWord(Player player){
 		System.out.println("Enter a new Word from common jar");
 		String in = enterAString();
 		Word word = new Word(in);
-		if(commonJar.containsLetter(word) && word.isWord(dictionnary)){
+		if(commonJar.letterContains(word) && word.isWord(dictionnary)){
 			System.out.println(word  + " is a word ! You win 1 point");
 			player.addWord(word);
 			commonJar.removeLetterFromWord(word);
@@ -208,9 +219,9 @@ public class Engine {
 
 	}
 
-	@Nullable
+	
 	public static Player existedPlayer(String name){
-		for(int i; i<players.size(); i++){
+		for(int i = 0; i<players.size(); i++){
 			if(players.get(i).getName().equals(name)){
 				return players.get(i);
 			}

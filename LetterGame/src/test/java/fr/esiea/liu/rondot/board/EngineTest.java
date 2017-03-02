@@ -28,7 +28,7 @@ public class EngineTest {
 			Player player = new Player("p"+ i );
 			game.addPlayers(player);
 		}
-		game.firstRound();
+		game.initOrder();
 	}
 	
 	
