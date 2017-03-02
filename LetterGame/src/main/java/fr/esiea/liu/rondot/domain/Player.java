@@ -27,6 +27,10 @@ public class Player {
 		return this.words;
 	}
 	
+	public void addWord(Word word){
+		words.add(word);
+	}
+	
 	public void countWords(){ 
 		this.score = this.words.size() ;
 	}
@@ -40,5 +44,14 @@ public class Player {
 	
 	public ArrayList<Word> retrieveWords(){
 		return this.words;
+	}
+	
+	public boolean isWinner(){
+		if(this.score == 10){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 }

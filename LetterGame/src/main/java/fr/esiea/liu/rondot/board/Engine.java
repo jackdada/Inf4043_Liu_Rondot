@@ -18,6 +18,14 @@ public class Engine {
 	
 	public static void run(String[] args) {
 		System.out.println("How many players?");	
+		int numberOfPlayers = enterAnInteger();
+		initPlayers(numberOfPlayers);
+		firstRound();
+		while(!aPlayerWon()){
+			printPlayersWords();
+			commonJar.printCommonJar();
+			
+		}
 	}
 	
 	public Engine() {
@@ -105,4 +113,45 @@ public class Engine {
 		in.close();
 		return integer;
 	}
+	
+	public static Player returnWinner(){
+		Player player = new Player("");
+		for(int i = 0 ; i < players.size() ; i ++){
+			if(players.get(i).isWinner()){
+				player = players.get(i);
+			}
+		}
+		return player;
+	}
+	
+	public static boolean aPlayerWon(){
+		boolean aPlayerWon = false;
+		for(int i = 0 ; i < players.size() ; i ++){
+			if(players.get(i).isWinner()){
+				aPlayerWon = true;
+			}
+			else{
+				aPlayerWon =  false; 
+			}
+		}
+		return aPlayerWon;
+	}
+	
+	public static void printPlayersWords(){
+		for(int i = 0 ; i < players.size() ; i ++){
+			System.out.print(players.get(i).getName() + "'s words: ");
+			for(int j = 0 ; j < players.get(i).getWords().size() ; i ++){
+				System.out.print(players.get(i).getWords().get(j) + "  ");
+			}
+		}
+	}
+	
+	public static void aPlayersTurn(Player player){
+		System.out.println("What do you want to do ?");
+		System.out.println("q: pass your turn | n: enter a new word | s: steal a word from other players");
+		String option = enterAString();
+		
+	}
+	
+	
 }
