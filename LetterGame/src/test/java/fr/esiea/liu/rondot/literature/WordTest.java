@@ -30,4 +30,11 @@ public class WordTest {
 		System.out.println(word.isWord(dictionnary));
 	}
 
+	@Test
+	public void testComparingWords(){
+		word = new Word("bonjour");
+		Word newWord = new Word("rebonjourlskjfljqsflkjqsdf");
+		System.out.println(newWord.toString().contains(word.toString()));
+		
+	}
 }

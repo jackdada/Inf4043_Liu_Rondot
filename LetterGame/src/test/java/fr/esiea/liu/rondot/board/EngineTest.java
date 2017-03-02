@@ -30,4 +30,10 @@ public class EngineTest {
 		}
 		game.firstRound();
 	}
+	
+	
+	@Test
+	public void testRun(){
+		game.run(null);
+	}
 }

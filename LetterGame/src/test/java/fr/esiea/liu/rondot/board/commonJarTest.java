@@ -24,9 +24,6 @@ public class commonJarTest {
 		}
 	}
 
-	@After
-	public void tearDown() throws Exception {
-	}
 
 	@Test
 	public void testRandomLetter() {
@@ -43,7 +40,6 @@ public class commonJarTest {
 			Map.Entry<Character,Integer> e = it.next();
 			System.out.println(e.getKey() + " : " + e.getValue());
 		}
-
 	}
 
 	@Test
