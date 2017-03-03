@@ -44,5 +44,5 @@ Auteurs:
     - Nous utilisons des *Iterator* pour parcourir nos collections sans connaitre la taille et ainsi éviter des *segmentation fault*.
     
 # Autres
-  - Pour faciliter le jeu, nous avons ajusté la génération des lettres (voyelles, consonnes les plus utilisées, ...) 
+  - Pour faciliter le jeu, nous avons ajusté la génération des lettres (voyelles, consonnes les plus utilisées, ...).
   - Test coverage à ... %
