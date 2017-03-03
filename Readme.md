@@ -45,12 +45,12 @@ Auteurs:
 # Test Coverage
 | Classes |Test Coverage| 
 | :----- |:-------------| 
-| Common Jar |  %|
-| Engine |  %|
-| Player |  %|
-| Dictionnary  |  %|
-| Word |  %|
-
+| Common Jar | 88 %|
+| Engine | %|
+| Player | %|
+| Dictionnary  |  100 %|
+| Word |  100 %|
+| Total |  %|
 # Autres
   - Pour faciliter le jeu, nous avons ajusté la génération des lettres (voyelles, consonnes les plus utilisées, ...).
 
