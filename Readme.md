@@ -1,5 +1,4 @@
-# Projet Architecture Logicielle
-
+# Projet Architecture Logicielle ESIEA 2017 | INF4043
 Auteurs: 
 
 - Kévin Liu - kliu@et.esiea.fr
