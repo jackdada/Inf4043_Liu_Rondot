@@ -5,8 +5,7 @@ import org.junit.Test;
 
 public class PlayerTest {
 
-    protected Player player = new Player("playerName");
-    
+    protected Player player = new Player("playerName",true);
     
     @Test
     public void testGetName() throws Exception {
@@ -18,4 +17,8 @@ public class PlayerTest {
         System.out.println(player.getScore());
     }
 
+    @Test
+    public void testIA() throws Exception{
+    	System.out.println(player.isAnIA());
+    }
 }

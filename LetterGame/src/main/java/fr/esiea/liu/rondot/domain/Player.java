@@ -1,18 +1,27 @@
 package fr.esiea.liu.rondot.domain;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
+import fr.esiea.liu.rondot.board.CommonJar;
+import fr.esiea.liu.rondot.literature.Dictionnary;
 import fr.esiea.liu.rondot.literature.Word;
 
-public class Player {
+public class Player{
 	private String name;
 	private int score = 0;
 	private ArrayList<Word> words = new ArrayList<>();
 	private Character firstLetter;
+	private boolean isAnIA;
 	
-	public Player(String name){
+	public Player(String name, boolean isAnIA){
 		this.name = name; 
 		this.score = words.size();
+		this.isAnIA = isAnIA;
+	}
+	
+	public boolean isAnIA(){
+		return isAnIA;
 	}
 	
 	public String getName(){ 
@@ -61,6 +70,23 @@ public class Player {
 		}
 		else{
 			return false;
+		}
+	}
+	
+	public void lookForAWord(CommonJar cj , Dictionnary d){
+		Iterator<String> itr = d.getDictionnary().iterator();
+		Word choosenWord = new Word("");
+		
+		while(itr.hasNext()){
+			Word word = new Word(itr.next());
+			if(cj.letterContains(word)){
+				this.addWord(word);
+				cj.removeLetterFromWord(word);
+				cj.drawLetter(1);
+				if(choosenWord.getWord().size() < word.getWord().size()){
+					choosenWord = word;
+				}
+			}
 		}
 	}
 }

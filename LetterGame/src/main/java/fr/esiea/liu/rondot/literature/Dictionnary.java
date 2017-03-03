@@ -10,7 +10,7 @@ public class Dictionnary {
 	private ArrayList<String> dictionnary = new ArrayList<>();
 
 	public Dictionnary(){
-		File rawDic = new File("src/main/resources/dico.txt");
+		File rawDic = new File("src/main/resources/dictionnary.txt");
 		Scanner s;
 		try {
 			s = new Scanner(rawDic,"UTF-8");

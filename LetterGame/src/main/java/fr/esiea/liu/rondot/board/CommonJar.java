@@ -25,6 +25,9 @@ public class CommonJar {
 		if(commonJar.size() != 0){
 			for(int i = 0 ; i < commonJar.size() ; i ++){
 				System.out.print(commonJar.get(i) + "  ");
+				if(i!= 0 && i%10 == 0){
+					System.out.println();
+				}
 			}
 			System.out.println();
 		}
@@ -41,8 +44,8 @@ public class CommonJar {
 		Random r = new Random();
 		ArrayList<String> alphabet = new ArrayList<String>();
 		alphabet.add("aei");
-		alphabet.add("dnrt");
-		alphabet.add("ouls");
+		alphabet.add("out");
+		alphabet.add("drnls");
 		alphabet.add("jcmpf");
 		alphabet.add("gbvhq");
 		alphabet.add("yxjkwz");

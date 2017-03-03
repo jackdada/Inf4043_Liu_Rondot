@@ -11,40 +11,70 @@ public class Engine {
 	private static CommonJar commonJar;
 	private static Dictionnary dictionnary;
 	private static ArrayList<Player> players;
-	private static int globalCounter = 0;
 
-	public Engine() {
+	
+	public static void main(String[] args){
 		commonJar = new CommonJar();
 		dictionnary = new Dictionnary();
 		players = new ArrayList<>();
+		System.out.println("Welcome to THE Letter Game !\nWhich mode ?\n"
+				+ "1. Player VS Player\n"
+				+ "2. Player VS IA");
+		int option = enterAnInteger();
+		if(option == 1){
+			run();
+		}
+		if(option == 2){
+			runIA();
+		}
 	}
 
 	public static void run(){
+		System.out.println("**********Mode Player VS Player**********");
 		System.out.println("How many players?");	
 		int numberOfPlayers = setNumberOfPlayers();
 		System.out.println(numberOfPlayers + " players created");
 		initPlayers(numberOfPlayers);
 		initOrder();
 		int playerIndex=0;
+		Player winner = null;
 		do{
+			
 			aPlayersTurn(players.get(playerIndex));
 			playerIndex++;
 			if(playerIndex == players.size()) {
 				playerIndex=0;
 			}
-
-		}while(!aPlayerWon());
-		Player winer = returnWinner();
-		endOfGame(winer);
+			winner = returnWinner();
+		}while(winner == null);
+		endOfGame(winner);
 	}
-	public static void main(String[] args){
-		commonJar = new CommonJar();
-		dictionnary = new Dictionnary();
-		players = new ArrayList<>();
-		run();
-	}
-	public  ArrayList<Player> getPlayers(){
-		return this.players;
+	
+	public static void runIA(){
+		System.out.println("**********Mode Player VS IA**********");
+		System.out.println("What is your name ?");
+		String name = enterAString();
+		players.add(new Player(name,false));
+		System.out.println("How many IA you want to play against ?");
+		int numberOfIA = setNumberOfIA();
+		initIA(numberOfIA);
+		initOrder();
+		int playerIndex=0;
+		Player winner = null;
+		do{
+			if(!players.get(playerIndex).isAnIA()){
+				aPlayersTurn(players.get(playerIndex));
+			}
+			else{
+				anIATurn(players.get(playerIndex));
+			}
+			playerIndex++;
+			if(playerIndex == players.size()) {
+				playerIndex=0;
+			}
+			winner = returnWinner();
+		}while(winner == null);
+		endOfGame(winner);
 	}
 
 	public static int setNumberOfPlayers(){
@@ -53,19 +83,35 @@ public class Engine {
 			return 2;
 		return number;
 	}
+	
+	public static int setNumberOfIA(){
+		int number = enterAnInteger();
+		if(number == -1)
+			return 2;
+		return number;
+	}
+	
 	public static void initPlayers(int number){
 		for(int i = 0 ; i < number ; i ++){
-			globalCounter++ ;
+			int j = i+1;
 			String name;
 			do {
-				System.out.println("Choose name for player nÂ° " + globalCounter);
+				System.out.println("Choose name for player n° " + j);
 				name = enterAString();
 				if(name.length() > 10){
 					name = name.substring(0, 10);
 				}
 			}while(existedName(name) == true);
-			Player player = new Player(name);
-			addPlayers(player);
+			Player player = new Player(name,false);
+			players.add(player);
+		}
+	}
+	
+	public static void initIA(int number){
+		for(int i = 0 ; i < number ; i ++){
+			int j = i+1;
+			Player george = new Player("GeorgeTheIA"+j,true);
+			players.add(george);
 		}
 	}
 
@@ -78,15 +124,22 @@ public class Engine {
 		}
 		return false;
 	}
-	public static void addPlayers(Player player){
-		players.add(player);
-	}
+
 
 	public static String enterAString(){
 		Scanner in = new Scanner(System.in);
 		String string = in.next();
 		return string;
 	}
+	
+	public static int enterAnInteger(){
+		Scanner in = new Scanner(System.in);
+		if(in.hasNextInt()) {
+			int integer = in.nextInt();
+				return integer;
+		}
+		return -1;
+	}	
 
 	public static void initOrder(){
 		for(int i = 0 ; i < players.size() ; i ++){
@@ -111,31 +164,17 @@ public class Engine {
 		}
 	}
 
-	public static int enterAnInteger(){
-		Scanner in = new Scanner(System.in);
-		if(in.hasNextInt()) {
-			int integer = in.nextInt();
-				return integer;
-		}
-		return -1;
-	}
-	
+
 	public static Player returnWinner(){
-		for(int i = 0 ; i < players.size() ; i ++){
-			if(players.get(i).isWinner()){
-				return players.get(i);
+		Iterator<Player> itr = players.iterator();
+		Player player = new Player("",false);
+		while(itr.hasNext()){
+			player = itr.next();
+			if(player.isWinner()){
+				return player;
 			}
 		}
 		return null;
-	}
-	
-	public static boolean aPlayerWon(){
-		for(int i = 0 ; i < players.size() ; i ++){
-			if(players.get(i).isWinner()){
-				return true;
-			}
-		}
-		return false;
 	}
 
 	public static void endOfGame(Player player){
@@ -162,13 +201,13 @@ public class Engine {
 	public static void aPlayersTurn(Player player){
 		boolean end = false;
 		commonJar.drawLetter(2);
+		
 		do {
 			printForAPlayerTurn(player.getName());
 			String option = enterAString();
 			switch (option) {
 				case "n":
 					newWord(player);
-
 					break;
 				case "s":
 					stealWordInit(player);
@@ -180,7 +219,12 @@ public class Engine {
 					System.out.println("Please select an appropriate option");
 					System.out.println();
 			}
-		}while (end == false || player.getScore() == 10);
+		}while (end == false && player.getScore() == 10);
+	}
+	
+	public static void anIATurn(Player ia){
+		commonJar.drawLetter(2);
+		ia.lookForAWord(commonJar, dictionnary );
 	}
 
 	public static void printForAPlayerTurn(String name){
@@ -203,9 +247,11 @@ public class Engine {
 			player.addWord(word);
 			commonJar.removeLetterFromWord(word);
 			commonJar.drawLetter(1);
+			System.out.println();
 		}
 		else{
 			System.out.println(word + " is not in dictionary or there is not enough letter in common jar");
+			System.out.println();
 		}
 	}
 	
@@ -241,7 +287,7 @@ public class Engine {
 			player.addWord(newWord);
 			commonJar.drawLetter(1);
 		}else{
-			System.out.println(newWord + " is not in dictionary or you don'y use all letter from the word stolen or there is not enough letter in common jar");
+			System.out.println(newWord + " is not in dictionary or you don't use all letter from the word stolen or there is not enough letter in common jar");
 		}
 	}
 	public static Word selectStolenWord(Player stolenPlayer){
@@ -275,8 +321,6 @@ public class Engine {
 		}
 		return firstWord;
 	}
-
-
 	
 	public static Player existedPlayer(String name){
 		Iterator<Player> playerIterator = players.iterator();
@@ -287,15 +331,5 @@ public class Engine {
 			}
 		}
 		return null;
-	}
-
-	public static int getIndexOfPlayer(String name){
-		int index = 0;
-		for(int i = 0 ; i < players.size() ; i ++){
-			if(players.get(i).getName().equals(name)){
-				index = i;
-			}
-		}
-		return index;
 	}
 }
