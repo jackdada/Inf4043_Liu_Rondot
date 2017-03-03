@@ -18,7 +18,7 @@ Auteurs:
     - s : voler un mot adverse et l'améliorer.
  - Le jeu termine lorsque le premier joueur trouve 10 mots. Ce dernier gagne la partie.
 
-# L'IA 
+# L'Intelligence Artificielle  
  - L'Intelligence Artificielle cherchera à chaque qu'elle joue, si les lettres d'un mot du dictionnaire sont présent sur le Pot Commun (Common Jar).
  - Elle parcourt donc tous les mots du dictionnaires et regarde si elle peut utiliser les mots du Pot Commun pour former des mots.
  - Elle essaye de créer exclusivement de nouveaux mots et ne cherche pas à voler un mot d'un adversaire.
