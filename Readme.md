@@ -21,7 +21,7 @@ Auteurs:
 
 # L'IA 
  - L'Intelligence Artificielle cherchera à chaque qu'elle joue, si les lettres d'un mot du dictionnaire sont présent sur le Pot Commun (Common Jar).
- - Elle parcourt donc tous les mots du dictionnaires et prend le mots le plus long selon les lettres disponibles dans le Pot Commun.
+ - Elle parcourt donc tous les mots du dictionnaires et regarde si elle peut utiliser les mots du Pot Commun pour former des mots.
  - Elle essaye de créer exclusivement de nouveaux mots et ne cherche pas à voler un mot d'un adversaire.
  
 # Notre architecture 
