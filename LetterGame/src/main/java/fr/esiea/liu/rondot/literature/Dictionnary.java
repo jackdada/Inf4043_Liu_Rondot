@@ -7,8 +7,8 @@ import java.util.Scanner;
 import java.text.Normalizer;
 
 public class Dictionnary {
-	private ArrayList<String> dictionnary = new ArrayList<String>();
-	
+	private ArrayList<String> dictionnary = new ArrayList<>();
+
 	public Dictionnary(){
 		File rawDic = new File("src/main/resources/dico.txt");
 		Scanner s;

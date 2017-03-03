@@ -7,7 +7,7 @@ import fr.esiea.liu.rondot.literature.Word;
 public class Player {
 	private String name;
 	private int score = 0;
-	private ArrayList<Word> words = new ArrayList<Word>();
+	private ArrayList<Word> words = new ArrayList<>();
 	private Character firstLetter;
 	
 	public Player(String name){
@@ -48,9 +48,9 @@ public class Player {
 	}
 
 
-	public void showWords(){
+	public void toStringWords(){
 		for(int i=0; i<words.size(); i++){
-			System.out.print(i + ": " + words.get(i) + "  ");
+			System.out.print(words.get(i) + "  ");
 		}
 		System.out.println();
 	}

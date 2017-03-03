@@ -5,14 +5,19 @@ import java.util.Iterator;
 
 public class Word {
 	
-	public ArrayList<Character> word = new ArrayList<>();
+	private ArrayList<Character> word;
 	
 	public Word(String word){
+		this.word = new ArrayList<>();
 		if(word != null && !word.equals("")){
+			word = word.toLowerCase();
 			for(int i = 0 ; i < word.length() ; i++){
 				this.word.add(new Character(word.charAt(i)));
 			}
 		}
+	}
+	public Word(Word anotherWord){
+		this.word = new ArrayList<>(anotherWord.getWord());
 	}
 	public ArrayList<Character> getWord(){
 		return this.word;
@@ -36,4 +41,7 @@ public class Word {
 			return false;
 		}
 	}
+
+
+
 }

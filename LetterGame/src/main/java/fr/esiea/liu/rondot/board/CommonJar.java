@@ -39,7 +39,19 @@ public class CommonJar {
 
 	public char randomLetter(){
 		Random r = new Random();
-		char c = (char)(r.nextInt(26) + 'a');
+		ArrayList<String> alphabet = new ArrayList<String>();
+		alphabet.add("aei");
+		alphabet.add("dnrt");
+		alphabet.add("ouls");
+		alphabet.add("jcmpf");
+		alphabet.add("gbvhq");
+		alphabet.add("yxjkwz");
+		char c = ' ';
+		int position = (r.nextInt(6));
+		for(int i = 0 ; i < alphabet.get(position).length() ; i ++){
+			int j = (r.nextInt(alphabet.get(position).length()));
+			c = alphabet.get(position).charAt(j);
+		}
 
 		return c;
 	}
@@ -70,5 +82,7 @@ public class CommonJar {
 			removeLetter(itr.next());
 		}
 	}
+
+
 
 }
