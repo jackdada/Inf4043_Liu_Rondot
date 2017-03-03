@@ -47,11 +47,11 @@ Auteurs:
 | Classes |Test Coverage| 
 | :----- |:-------------| 
 | Common Jar | 88 %|
-| Engine | %|
+| Engine | 20 %|
 | Player | 83 %|
 | Dictionnary  |  100 %|
 | Word |  100 %|
-| Total |  %|
+| Total |  78,2 %|
 # Autres
   - Pour faciliter le jeu, nous avons ajusté la génération des lettres (voyelles, consonnes les plus utilisées, ...).
-
+  - 
