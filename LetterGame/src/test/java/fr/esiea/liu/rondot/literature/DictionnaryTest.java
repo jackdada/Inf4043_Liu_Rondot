@@ -3,6 +3,7 @@ package fr.esiea.liu.rondot.literature;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 import fr.esiea.liu.rondot.literature.Dictionnary;
 
 public class DictionnaryTest {
@@ -20,13 +21,17 @@ public class DictionnaryTest {
 
 	@Test
 	public void testStripAccents() {
-		System.out.println("éèëêàâäùüûöôîï : " + dictionnary.stripAccents("éèëêàâäùüûöôîï"));
+		assertEquals("eeeeaaauuuooii", dictionnary.stripAccents("éèëêàâäùüûöôîï"));
 	}
 
 	@Test
-	public  void  testContains(){
-		System.out.println("bonjour : " + dictionnary.contains("bonjour"));
-		System.out.println("zlskdie : " + dictionnary.contains("zlskdie"));
+	public  void  testContainsTrue(){
+		assertEquals(true, dictionnary.contains("bonjour"));
+	}
+
+	@Test
+	public  void  testContainsFalse(){
+		assertEquals(false, dictionnary.contains("zeurjdnfjekdo"));
 	}
 
 	@Test
@@ -39,5 +44,4 @@ public class DictionnaryTest {
 		}
 		System.out.println("Size of the dictionnary: " + dictionnary.getDictionnary().size());
 	}
-
 }

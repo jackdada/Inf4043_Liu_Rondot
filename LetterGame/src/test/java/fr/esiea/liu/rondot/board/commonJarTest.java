@@ -4,6 +4,7 @@ import fr.esiea.liu.rondot.literature.Word;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 import fr.esiea.liu.rondot.board.CommonJar;
 
@@ -23,7 +24,6 @@ public class commonJarTest {
 			a++;
 		}
 	}
-
 
 	@Test
 	public void testRandomLetter() {
@@ -45,24 +45,20 @@ public class commonJarTest {
 	@Test
 	public void testDrawLetter1() {
 		commonJar.drawLetter(1);
-		commonJar.printCommonJar();
-		System.out.println();
+		assertEquals(1, commonJar.getCommonJar().size());
 	}
 
 	@Test
 	public void testDrawLetter2() {
 		commonJar.drawLetter(2);
-		commonJar.printCommonJar();
-		System.out.println();
+		assertEquals(2, commonJar.getCommonJar().size());
 	}
 
 	@Test
 	public void testGetLetter(){
 		commonJar.drawLetter(10);
-		commonJar.printCommonJar();
-		System.out.println();
-		System.out.println(commonJar.getLetter(5));
-
+		ArrayList<Character> jar = commonJar.getCommonJar();
+		assertEquals(jar.get(5), commonJar.getLetter(5));
 	}
 
 	@Test

@@ -2,7 +2,10 @@ package fr.esiea.liu.rondot.literature;
 
 import org.junit.Before;
 import org.junit.Test;
-
+import static org.junit.Assert.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import fr.esiea.liu.rondot.literature.Dictionnary;
 import fr.esiea.liu.rondot.literature.Word;
 
@@ -19,22 +22,39 @@ public class WordTest {
 	@Test
 	public void testNonExistingWord() {
 		word = new Word("psjdfljsdf");
-		System.out.print("The dictionnary contains the word <"+ word + "> : ");
-		System.out.println(word.isWord(dictionnary));
+		assertEquals(false, word.isWord(dictionnary));
 	}
-	
+
 	@Test
 	public void testExistingWord() {
 		word = new Word("bonjour");
-		System.out.print("The dictionnary contains the word <"+ word + "> : ");
-		System.out.println(word.isWord(dictionnary));
+		assertEquals(true, word.isWord(dictionnary));
 	}
 
 	@Test
 	public void testComparingWords(){
-		word = new Word("bonjour");
-		Word newWord = new Word("rebonjourlskjfljqsflkjqsdf");
-		System.out.println(newWord.toString().contains(word.toString()));
-		
+		Word word = new Word("bonjour");
+		assertEquals("bonjour", word.toString());
+	}
+
+	@Test
+	public void testGetWord(){
+		Word word = new Word("bonjour");
+		ArrayList<Character> wordArray = new ArrayList<>();
+		wordArray.add('b');
+		wordArray.add('o');
+		wordArray.add('n');
+		wordArray.add('j');
+		wordArray.add('o');
+		wordArray.add('u');
+		wordArray.add('r');
+		assertEquals(wordArray, word.getWord());
+	}
+	@Test
+	public void testWordFromAnother(){
+		Word word = new Word("bonjour");
+		Word word2 = new Word(word);
+
+		assertEquals("bonjour", word.toString());
 	}
 }
