@@ -62,16 +62,21 @@ public class commonJarTest {
 	}
 
 	@Test
-	public  void testLetterContains(){
+	public  void testLetterContainsTrue() {
 		String str = "ohnfcjdkascn";
-		for(int i = 0 ; i < str.length() ; i++){
+		for (int i = 0; i < str.length(); i++) {
 			commonJar.add(str.charAt(i));
 		}
+		assertEquals(true, commonJar.letterContains((new Word("canon"))));
+	}
 
-		System.out.println("commonJar : " + commonJar.getCommonJar());
-		System.out.println("canon is contain ? " + commonJar.letterContains(new Word("canon")));
-		System.out.println("colon is contain ? " + commonJar.letterContains(new Word("colon")));
-		System.out.println("nanoc is contain ? " + commonJar.letterContains(new Word("nanoc")));
+	@Test
+	public  void testLetterContainsFalse() {
+		String str = "ohnfcjdkascn";
+		for (int i = 0; i < str.length(); i++) {
+			commonJar.add(str.charAt(i));
+		}
+		assertEquals(false, commonJar.letterContains((new Word("colon"))));
 	}
 
 	@Test
@@ -85,18 +90,21 @@ public class commonJarTest {
 		commonJar.removeLetterFromWord(new Word("canon"));
 		System.out.println("commonJar : " + commonJar.getCommonJar());
 	}
+
 	@Test
-	public void oto(){
-		Collection<String> listOne = new ArrayList(Arrays.asList("a","b", "c", "d", "d", "e", "f", "g"));
-		Collection<String> listTwo = new ArrayList(Arrays.asList("a","b", "d", "e", "f", "gg", "h"));
-
-		List<String> sourceList = new ArrayList<String>(listOne);
-		List<String> destinationList = new ArrayList<String>(listTwo);
-
-		sourceList.removeAll( listTwo );
-		destinationList.removeAll( listOne );
-
-		System.out.println( sourceList );
-		System.out.println( destinationList );
+	public void testGetCommon(){
+		String str = "ohnfcjd";
+		for(int i = 0 ; i < str.length() ; i++){
+			commonJar.add(str.charAt(i));
+		}
+		ArrayList<Character> jar = new ArrayList<>();
+		jar.add('o');
+		jar.add('h');
+		jar.add('n');
+		jar.add('f');
+		jar.add('c');
+		jar.add('j');
+		jar.add('d');
+		assertEquals(jar, commonJar.getCommonJar());
 	}
 }

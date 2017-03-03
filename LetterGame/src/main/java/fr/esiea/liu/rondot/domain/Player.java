@@ -13,29 +13,29 @@ public class Player{
 	private ArrayList<Word> words = new ArrayList<>();
 	private Character firstLetter;
 	private boolean isAnIA;
-	
+
 	public Player(String name, boolean isAnIA){
-		this.name = name; 
+		this.name = name;
 		this.score = words.size();
 		this.isAnIA = isAnIA;
 	}
-	
+
 	public boolean isAnIA(){
 		return isAnIA;
 	}
-	
-	public String getName(){ 
-		return this.name; 
+
+	public String getName(){
+		return this.name;
 	}
-	
-	public int getScore(){ 
-		return this.score; 
+
+	public int getScore(){
+		return this.score;
 	}
-	
-	public ArrayList<Word> getWords() { 
+
+	public ArrayList<Word> getWords() {
 		return this.words;
 	}
-	
+
 	public void addWord(Word word){
 		words.add(word);
 		score++;
@@ -44,11 +44,7 @@ public class Player{
 		words.remove(word);
 		score--;
 	}
-	
-	public void countWords(){ 
-		this.score = this.words.size() ;
-	}
-	
+
 	public void setFirstLetter(Character letter){
 		this.firstLetter = letter;
 	}
@@ -65,30 +61,40 @@ public class Player{
 	}
 
 	public boolean isWinner(){
-		if(this.score == 10){
+		if(this.score >=  10){
 			return true;
 		}
 		else{
 			return false;
 		}
 	}
-	
-	public boolean lookForAWord(CommonJar cj , Dictionnary d){
+
+	public void lookForAWord(CommonJar cj , Dictionnary d){
 		Iterator<String> itr = d.getDictionnary().iterator();
-		Word choosenWord = new Word("");
 		boolean iaHasPlayed = false;
+		int i = 0 ;
 		while(itr.hasNext()){
 			Word word = new Word(itr.next());
 			if(cj.letterContains(word)){
 				this.addWord(word);
 				cj.removeLetterFromWord(word);
 				cj.drawLetter(1);
-				if(choosenWord.getWord().size() < word.getWord().size()){
-					choosenWord = word;
-				}
 				iaHasPlayed = true;
+				i++;
 			}
 		}
-		return iaHasPlayed;
+		if(iaHasPlayed){
+			if(i == 1){
+				System.out.println(this.name +" has found " + i + " word ! He wins " + i + " point");
+				System.out.println();
+			}else{
+				System.out.println(this.name +" has found " + i + " words ! He wins " + i + " points");
+				System.out.println();
+			}
+		}
+		else{
+			System.out.println(this.name + " didn't find a word");
+			System.out.println();
+		}
 	}
 }

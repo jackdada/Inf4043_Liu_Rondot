@@ -13,7 +13,7 @@ public class Engine {
 	private static ArrayList<Player> players;
 	private static Scanner in;
 
-	
+
 	public static void main(String[] args){
 		commonJar = new CommonJar();
 		dictionnary = new Dictionnary();
@@ -33,7 +33,7 @@ public class Engine {
 
 	public static void run(){
 		System.out.println("**********Mode Player VS Player**********");
-		System.out.println("How many players?");	
+		System.out.println("How many players?");
 		int numberOfPlayers = setNumberOfPlayers();
 		System.out.println(numberOfPlayers + " players created");
 		initPlayers(numberOfPlayers);
@@ -41,7 +41,7 @@ public class Engine {
 		int playerIndex=0;
 		Player winner = null;
 		do{
-			
+
 			aPlayersTurn(players.get(playerIndex));
 			playerIndex++;
 			if(playerIndex == players.size()) {
@@ -51,7 +51,7 @@ public class Engine {
 		}while(winner == null);
 		endOfGame(winner);
 	}
-	
+
 	public static void runIA(){
 		System.out.println("**********Mode Player VS IA**********");
 		System.out.println("What is your name ?");
@@ -85,20 +85,20 @@ public class Engine {
 			return 2;
 		return number;
 	}
-	
+
 	public static int setNumberOfIA(){
 		int number = enterAnInteger();
 		if(number == -1)
 			return 2;
 		return number;
 	}
-	
+
 	public static void initPlayers(int number){
 		for(int i = 0 ; i < number ; i ++){
 			int j = i+1;
 			String name;
 			do {
-				System.out.println("Choose name for player n° " + j);
+				System.out.println("Choose name for player nï¿½ " + j);
 				name = enterAString();
 				if(name.length() > 10){
 					name = name.substring(0, 10);
@@ -108,7 +108,7 @@ public class Engine {
 			players.add(player);
 		}
 	}
-	
+
 	public static void initIA(int number){
 		for(int i = 0 ; i < number ; i ++){
 			int j = i+1;
@@ -133,15 +133,15 @@ public class Engine {
 		String string = in.next();
 		return string;
 	}
-	
+
 	public static int enterAnInteger(){
 		in = new Scanner(System.in);
 		if(in.hasNextInt()) {
 			int integer = in.nextInt();
-				return integer;
+			return integer;
 		}
 		return -1;
-	}	
+	}
 
 	public static void initOrder(){
 		for(int i = 0 ; i < players.size() ; i ++){
@@ -149,6 +149,7 @@ public class Engine {
 			players.get(i).setFirstLetter(commonJar.getLetter(i));
 		}
 		sortPlayers();
+		System.out.println();
 	}
 
 	public static void sortPlayers(){
@@ -184,7 +185,7 @@ public class Engine {
 		System.out.println("His word: " );
 		player.toStringWords();
 	}
-	
+
 	public static void printPlayersWords(){
 		Iterator<Player> playerIterator = players.iterator();
 		while (playerIterator.hasNext()) {
@@ -199,11 +200,11 @@ public class Engine {
 		}
 		System.out.println();
 	}
-	
+
 	public static void aPlayersTurn(Player player){
 		boolean end = false;
 		commonJar.drawLetter(2);
-		
+
 		do {
 			printForAPlayerTurn(player.getName());
 			String option = enterAString();
@@ -223,15 +224,10 @@ public class Engine {
 			}
 		}while (end == false && player.getScore() == 10);
 	}
-	
+
 	public static void anIATurn(Player ia){
 		commonJar.drawLetter(2);
-		if(ia.lookForAWord(commonJar, dictionnary)){
-			System.out.println(ia.getName() + " has found a word ! He wins 1 point !");
-		}
-		else{
-			System.out.println(ia.getName() + " did not found a word :(");
-		}
+		ia.lookForAWord(commonJar, dictionnary);
 	}
 
 	public static void printForAPlayerTurn(String name){
@@ -261,7 +257,7 @@ public class Engine {
 			System.out.println();
 		}
 	}
-	
+
 	public static void stealWordInit(Player player){
 		Player stolenPlayer = null;
 		do {
@@ -328,7 +324,7 @@ public class Engine {
 		}
 		return firstWord;
 	}
-	
+
 	public static Player existedPlayer(String name){
 		Iterator<Player> playerIterator = players.iterator();
 		while (playerIterator.hasNext()) {
