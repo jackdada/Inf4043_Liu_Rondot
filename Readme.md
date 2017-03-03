@@ -33,7 +33,7 @@ Auteurs:
       - **Player** est la classe joueur, elle prend en paramètre le nom en *String* et une variable booléenne *true* ou *false* pour savoir si c'est une IA.
    - literature contient:
       - **Dictionnary** est la classe permettant de charger tous les mots du dictionnaire (fichier *dictionnary.txt*). Elle transforme toutes les lettres spéciales (é, à , ù ...) en lettres normales (e, a, u ...).
-      NOTA: Nous nous sommes permis de prendre une autre liste de mots français.
+      NOTA: Nous nous sommes permis de prendre une autre liste de mots français. src: http://www.freelang.com/dictionnaire/dic-francais.php
       - **Word** est la classe qui permet de gérer les mots et savoir si un mot est contenu dans le dictionnaire.
    
 # Principe SOLID et Design Pattern
