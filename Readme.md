@@ -5,7 +5,7 @@ Auteurs:
 - Romain Rondot - rondot@et.esiea.fr
 
 # Déroulement du jeu:
- - Choisir un mode: *Player VS IA* ou* Player VS Players*
+ - Choisir un mode: *Player VS IA* ou *Player VS Players*
     - **Player VS IA**
         - Entrer nom du joueur.
         - Choisir le nombre de IA.
