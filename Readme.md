@@ -47,7 +47,7 @@ Auteurs:
 | :----- |:-------------| 
 | Common Jar | 88 %|
 | Engine | %|
-| Player | %|
+| Player | 83 %|
 | Dictionnary  |  100 %|
 | Word |  100 %|
 | Total |  %|
