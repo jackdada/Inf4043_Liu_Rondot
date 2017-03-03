@@ -51,7 +51,7 @@ Auteurs:
 | Player | 83 %|
 | Dictionnary  |  100 %|
 | Word |  100 %|
-| Total |  78,2 %|
+| **Total** |  78,2 %|
 # Autres
   - Pour faciliter le jeu, nous avons ajusté la génération des lettres (voyelles, consonnes les plus utilisées, ...).
   - Nous ne sommes pas parvenu à tester toute la classe Engine par soucis des entrées en console de valeurs (*String* ou *Integer*) trop nombreuses du jeux.
