@@ -5,11 +5,11 @@ Auteurs:
 - Romain Rondot - rondot@et.esiea.fr
 
 # Déroulement du jeu:
- - Choisir un mode: Player VS IA ou Player VS Players
-    - Mode Player VS IA
+ - Choisir un mode: *Player VS IA* ou* Player VS Players*
+    - **Player VS IA**
         - Entrer nom du joueur.
         - Choisir le nombre de IA.
-    - Mode Player VS Player
+    - **Player VS Player**
         - Entrer le nombre de joueurs.
         - Entrer le nom des joueurs au fur et à mesure.
  - Au tour d'un joueur, 3 options s'offrent à lui:
