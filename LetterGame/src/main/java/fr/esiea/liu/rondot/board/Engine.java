@@ -11,6 +11,7 @@ public class Engine {
 	private static CommonJar commonJar;
 	private static Dictionnary dictionnary;
 	private static ArrayList<Player> players;
+	private static Scanner in;
 
 	
 	public static void main(String[] args){
@@ -27,6 +28,7 @@ public class Engine {
 		if(option == 2){
 			runIA();
 		}
+		in.close();
 	}
 
 	public static void run(){
@@ -127,13 +129,13 @@ public class Engine {
 
 
 	public static String enterAString(){
-		Scanner in = new Scanner(System.in);
+		in = new Scanner(System.in);
 		String string = in.next();
 		return string;
 	}
 	
 	public static int enterAnInteger(){
-		Scanner in = new Scanner(System.in);
+		in = new Scanner(System.in);
 		if(in.hasNextInt()) {
 			int integer = in.nextInt();
 				return integer;
@@ -224,7 +226,12 @@ public class Engine {
 	
 	public static void anIATurn(Player ia){
 		commonJar.drawLetter(2);
-		ia.lookForAWord(commonJar, dictionnary );
+		if(ia.lookForAWord(commonJar, dictionnary)){
+			System.out.println(ia.getName() + " has found a word ! He wins 1 point !");
+		}
+		else{
+			System.out.println(ia.getName() + " did not found a word :(");
+		}
 	}
 
 	public static void printForAPlayerTurn(String name){

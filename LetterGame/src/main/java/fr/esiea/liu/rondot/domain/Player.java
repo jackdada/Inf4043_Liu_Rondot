@@ -73,10 +73,10 @@ public class Player{
 		}
 	}
 	
-	public void lookForAWord(CommonJar cj , Dictionnary d){
+	public boolean lookForAWord(CommonJar cj , Dictionnary d){
 		Iterator<String> itr = d.getDictionnary().iterator();
 		Word choosenWord = new Word("");
-		
+		boolean iaHasPlayed = false;
 		while(itr.hasNext()){
 			Word word = new Word(itr.next());
 			if(cj.letterContains(word)){
@@ -86,7 +86,9 @@ public class Player{
 				if(choosenWord.getWord().size() < word.getWord().size()){
 					choosenWord = word;
 				}
+				iaHasPlayed = true;
 			}
 		}
+		return iaHasPlayed;
 	}
 }
