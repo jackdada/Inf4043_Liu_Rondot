@@ -41,7 +41,16 @@ Auteurs:
     - **O** : Nos classes sont ouvertes à l'extension mais fermées à la modification. Certains de nos classes contiennent des *getter* et *setter*.
   - Notre projet utilise le Design Pattern du **Iterator Pattern**
     - Nous utilisons des *Iterator* pour parcourir nos collections sans connaitre la taille et ainsi éviter des *segmentation fault*.
-    
+  
+# Test Coverage
+| Classes |Test Coverage| 
+| :----- |:-------------| 
+| Common Jar |  %|
+| Engine |  %|
+| Player |  %|
+| Dictionnary  |  %|
+| Word |  %|
+
 # Autres
   - Pour faciliter le jeu, nous avons ajusté la génération des lettres (voyelles, consonnes les plus utilisées, ...).
-  - Test coverage à ... %
+
