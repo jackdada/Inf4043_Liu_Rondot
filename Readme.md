@@ -18,7 +18,7 @@ Auteurs:
     - s : voler un mot adverse et l'améliorer.
  - Le jeu termine lorsque le premier joueur trouve 10 mots. Ce dernier gagne la partie.
 
-# L'IA 
+# L'Intelligence Artificielle  
  - L'Intelligence Artificielle cherchera à chaque qu'elle joue, si les lettres d'un mot du dictionnaire sont présent sur le Pot Commun (Common Jar).
  - Elle parcourt donc tous les mots du dictionnaires et regarde si elle peut utiliser les mots du Pot Commun pour former des mots.
  - Elle essaye de créer exclusivement de nouveaux mots et ne cherche pas à voler un mot d'un adversaire.
@@ -32,7 +32,8 @@ Auteurs:
       - **Player** est la classe joueur, elle prend en paramètre le nom en *String* et une variable booléenne *true* ou *false* pour savoir si c'est une IA.
    - literature contient:
       - **Dictionnary** est la classe permettant de charger tous les mots du dictionnaire (fichier *dictionnary.txt*). Elle transforme toutes les lettres spéciales (é, à , ù ...) en lettres normales (e, a, u ...).
-      NOTA: Nous nous sommes permis de prendre une autre liste de mots français. **src**: http://www.freelang.com/dictionnaire/dic-francais.php
+        - NOTA: Nous nous sommes permis de prendre une autre liste de mots français. 
+          **src**: http://www.freelang.com/dictionnaire/dic-francais.php
       - **Word** est la classe qui permet de gérer les mots et savoir si un mot est contenu dans le dictionnaire.
    
 # Principe SOLID et Design Pattern
@@ -46,11 +47,11 @@ Auteurs:
 | Classes |Test Coverage| 
 | :----- |:-------------| 
 | Common Jar | 88 %|
-| Engine | %|
+| Engine | 20 %|
 | Player | 83 %|
 | Dictionnary  |  100 %|
 | Word |  100 %|
-| Total |  %|
+| Total |  78,2 %|
 # Autres
   - Pour faciliter le jeu, nous avons ajusté la génération des lettres (voyelles, consonnes les plus utilisées, ...).
-
+  - 
