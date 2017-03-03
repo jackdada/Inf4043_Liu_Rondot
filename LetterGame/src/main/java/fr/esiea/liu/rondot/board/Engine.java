@@ -30,7 +30,20 @@ public class Engine {
 		}
 		in.close();
 	}
-
+	public Engine(){
+		commonJar = new CommonJar();
+		dictionnary = new Dictionnary();
+		players = new ArrayList<>();
+	}
+	public static CommonJar getCommonJar(){
+			return commonJar;
+	}
+	public static Dictionnary getDictionnary(){
+		return dictionnary;
+	}
+	public static ArrayList<Player> getPlayers(){
+		return players;
+	}
 	public static void run(){
 		System.out.println("**********Mode Player VS Player**********");
 		System.out.println("How many players?");
